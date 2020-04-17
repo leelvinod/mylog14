@@ -85,10 +85,14 @@ left:0;" item-left>
   <div
     style=" width:100%; background-color:rgba(255, 255, 255, 0);display: flex;flex-direction: row; align-items: center;">
     <div style="flex: 1;"></div>
-    <!-- <ion-button (click)="play()" style="flex: 1; background-color:rgba(255, 255, 255, 0);" col-3>
+    <ion-button (click)="play()" style="flex: 1; background-color:rgba(255, 255, 255, 0);" col-3>
+      <!-- <div></div> -->
+      <!-- FIXME 資料抓取導致整個APP異常 -->
+      <ion-badge   style="position:absolute;left: 15vw;bottom: 15vw;"color="warning">{{(dataStore.dailyRecords$ | async).list.length}}</ion-badge>
+
       <img src="../../assets/ui/rain_icon .svg" />
     </ion-button>
-    <ion-button  (click)="stop()" style="flex: 1;background-color:rgba(255, 255, 255, 0);" col-3>
+    <!-- <ion-button  (click)="stop()" style="flex: 1;background-color:rgba(255, 255, 255, 0);" col-3>
       <img src="../../assets/ui/tw_icon_R.svg" />
     </ion-button> -->
     <div style="flex: 1;"></div>

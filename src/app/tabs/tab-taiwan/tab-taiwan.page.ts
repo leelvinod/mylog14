@@ -1,6 +1,7 @@
 import { Component, OnInit ,NgZone} from '@angular/core';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
+import { DataStoreService } from '../../core/services/data-store.service';
 
 @Component({
   selector: 'app-tab-taiwan',
@@ -18,11 +19,14 @@ export class TabTaiwanPage implements OnInit {
     path: '/assets/lottie/island.json',
 
   };
-  
-
+  arry:any;
+//  arry = this.dataStore.dailyRecords$ 
   private animationItem: AnimationItem;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(
+    private ngZone: NgZone,
+    public dataStore: DataStoreService,
+    ) {}
 
   ngOnInit() {
   }
