@@ -1,4 +1,4 @@
-import { Component, OnInit ,NgZone} from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { DataStoreService } from '../../core/services/data-store.service';
@@ -9,7 +9,7 @@ import { DataStoreService } from '../../core/services/data-store.service';
   styleUrls: ['./tab-taiwan.page.scss'],
 })
 export class TabTaiwanPage implements OnInit {
-	options: AnimationOptions = {
+  options: AnimationOptions = {
     // path: '/assets/lottie-animation.json',
     path: '/assets/lottie/rain.json',
 
@@ -19,18 +19,24 @@ export class TabTaiwanPage implements OnInit {
     path: '/assets/lottie/island.json',
 
   };
-  arry:any;
-//  arry = this.dataStore.dailyRecords$ 
+  arry: any;
+  drip = 1;
+  isDisabled=false;
+  
+  //  arry = this.dataStore.dailyRecords$ 
   private animationItem: AnimationItem;
 
   constructor(
     private ngZone: NgZone,
     public dataStore: DataStoreService,
-    ) {}
+  ) { }
 
   ngOnInit() {
   }
+  // isDisabled(){
+  //  return false;
 
+  // }
   animationCreated(animationItem: AnimationItem): void {
     this.animationItem = animationItem;
   }
@@ -39,9 +45,16 @@ export class TabTaiwanPage implements OnInit {
     this.ngZone.runOutsideAngular(() => this.animationItem.stop());
   }
 
-  play(): void {
+  play(days): void {
+    this.drip = this.drip + 1
+    console.log(days);
+    if (days <= 0) {
+      this.isDisabled = true;
+    }else{
+      this.isDisabled = false;
+    }
     this.ngZone.runOutsideAngular(() => this.animationItem.play());
   }
 
-  
+
 }
