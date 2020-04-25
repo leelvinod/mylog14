@@ -11,8 +11,8 @@
         <ion-row>
 
         </ion-row>
-        
-        <ion-title class="ion-text-center">有  3,653  位朋友</ion-title>
+
+        <ion-title class="ion-text-center">有 3,653 位朋友</ion-title>
         <ion-title class="ion-text-center">紀錄超過 4,563 筆資料</ion-title>
         <ion-title class="ion-text-center">來保護台灣</ion-title>
 
@@ -37,15 +37,24 @@
           z-index: 100; 
           /* background: red;  */
           top:0; left:0; 
-          width:100%; height:100%; " [options]="options"  
-           (loopComplete)="stop()"
- (animationCreated)="animationCreated($event)"></ng-lottie>
+          width:100%; height:100%; " [options]="options" (loopComplete)="stop()"
+            (animationCreated)="animationCreated($event)"></ng-lottie>
           <!-- <ng-lottie style="position: absolute; 
  z-index: 100; 
  /* background: red;  */
  top:0; left:0; 
  width:100%; height:100%; " [options]="options"></ng-lottie> -->
-
+          <!-- <div style="position:absolute;z-index: 200;; top:60%; width:100%; background-color:rgba(255, 255, 255, 0); ">
+            <div
+              style=" width:100%; background-color:rgba(255, 255, 255, 0);display: flex;flex-direction: row; align-items: center;">
+              <div style="flex: 1;"></div>
+              <ion-button [disabled]="isDisabled" style="flex: 1; background-color:rgba(255, 255, 255, 0);" col-3>
+                <ion-badge style="position:absolute;left: 12.5vw;bottom: 15.5vw;" color="warning">11</ion-badge>
+                <img src="../../assets/ui/rain_icon .svg" />
+              </ion-button>
+              <div style="flex: 1;"></div>
+            </div>
+          </div> -->
         </div>
       </ion-col>
       <ion-col>
@@ -90,12 +99,14 @@ left:0;" item-left>
 
   <div
     style=" width:100%; background-color:rgba(255, 255, 255, 0);display: flex;flex-direction: row; align-items: center;">
-    <div style="flex: 1;" ></div>
-    <ion-button  [disabled]="isDisabled"  *ngIf="dataStore.dailyRecords$ | async as days; else loading" (click)="play(days.list.length-drip)" style="flex: 1; background-color:rgba(255, 255, 255, 0);" col-3>
+    <div style="flex: 1;"></div>
+    <ion-button [disabled]="isDisabled" *ngIf="dataStore.dailyRecords$ | async as days; else loading"
+      (click)="play(days.list.length-drip)" style="flex: 1; background-color:rgba(255, 255, 255, 0);" col-3>
       <!-- <div disabled="isDisabled"></div> -->
       <!-- FIXME 資料抓取導致整個APP異常 -->
-    
-      <ion-badge   style="position:absolute;left: 15vw;bottom: 15vw;"color="warning"  >{{days.list.length-drip}}:{{drip}}</ion-badge>
+
+      <ion-badge style="position:absolute;left: 15vw;bottom: 15vw;" color="warning">{{days.list.length-drip}}:{{drip}}
+      </ion-badge>
       <!-- <ion-badge   style="position:absolute;left: 15vw;bottom: 15vw;"color="warning">{{(dataStore.dailyRecords$ | async).list.length}}</ion-badge> -->
       <img src="../../assets/ui/rain_icon .svg" />
     </ion-button>
@@ -104,6 +115,4 @@ left:0;" item-left>
     </ion-button> -->
     <div style="flex: 1;"></div>
   </div>
-
-
 </div>
